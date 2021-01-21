@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 const HomepageView = props => {
   return (
     <div>
-    <h1> New Campus Form </h1>
+    <h1> Home PAGE</h1>
      <div id="navbar"> 
       <div id="homelink">
          <Link to='/'> Home</Link>
@@ -14,11 +14,6 @@ const HomepageView = props => {
         <Link to='#' id="campuses"> Campuses </Link>
         <Link to='#' id="students"> Students </Link>
       </div>
-     </div>
-     <div id="searchfield">
-        <h3> Campus Name</h3>
-        <input  name='' value='' placeholder='campus name' /> <br/>
-        <button> Add Campus</button>
      </div>
     </div>
   );
