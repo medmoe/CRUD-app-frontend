@@ -4,3 +4,23 @@
 .all-compuses{
   border: 2px solid red;
 }
+
+#navbar{
+  height: 120px;
+  display: flex;
+}
+.campus_student_link{
+  flex: 2;
+  margin: 10px;
+  display: flex;
+}
+#campuses{
+  flex: 1;
+}
+#students{
+  flex: 1;
+}
+#homelink{
+  flex: 1;
+  margin: 10px;
+}

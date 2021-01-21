@@ -23,7 +23,6 @@ export const fetchAllCompusesThunk = () => dispatch => {
   return axios
   .get('/api/compuses')
   .then(res => res.data)
-  .then(compuses => dispatch(fetchAllCompuses(compuses)))
   .catch(err => console.error(err.message))
 }
 
