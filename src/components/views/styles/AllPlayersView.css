@@ -1,3 +1,6 @@
-.all-players {
-  color: red;
+.all-students{
+  border: 2px solid black;
+}
+.all-compuses{
+  border: 2px solid red;
 }
