@@ -11,7 +11,7 @@ const HomepageView = props => {
          <Link to='/'> Home</Link>
       </div>
       <div className="campus_student_link">
-        <Link to='#' id="campuses"> Campuses </Link>
+        <Link to='/allcampuses' id="campuses"> Campuses </Link>
         <Link to='#' id="students"> Students </Link>
       </div>
      </div>

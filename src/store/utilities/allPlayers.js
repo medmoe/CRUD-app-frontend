@@ -1,3 +1,6 @@
+// Not been used
+
+
 import axios from 'axios';
 
 // ACTION TYPES;
@@ -36,4 +39,4 @@ const reducer = (state = [], action) => {
   }
 }
 
-export default reducer;
+//export default reducer;
