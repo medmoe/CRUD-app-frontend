@@ -1,7 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { AllPlayersContainer, AllStudentsContainer } from '../containers';
-
+import { AllPlayersContainer, AllStudentsContainer, AllCompusesContainer } from '../containers';
 const RoutesView = () => {
   return (
     <Switch>
