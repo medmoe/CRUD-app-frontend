@@ -14,7 +14,7 @@ const fetchAllCompuses = campuses => {
 // THUNK CREATORS;
 export const fetchAllcampusesThunk = () => dispatch => {
   return axios
-    .get('http://localhost:8080/api/campuses') // to be checked
+    .get('http://localhost:1234/api/campuses') // to be checked
     .then(res => res.data)
     .then(campuses => dispatch(fetchAllCompuses(campuses)))
     .catch(err => console.log(err)) // print the errors
