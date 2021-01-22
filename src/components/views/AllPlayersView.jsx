@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/AllPlayersView.css';
+import './styles/style.css';
 import PropTypes from 'prop-types';
 
 const AllPlayersView = props => {
