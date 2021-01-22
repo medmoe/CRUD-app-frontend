@@ -7,7 +7,7 @@ const AllCompusesView = props => {
     <div className="all-compuses">
       {props.allCompuses.map(compuse => (
         <div key={compuse.id}>
-          <h1>{compuse.firstName}</h1>
+          <h1>{compuse.name}</h1>
           <h1>{compuse.image} img</h1>
         </div>
       ))}
@@ -16,7 +16,7 @@ const AllCompusesView = props => {
 };
 
 AllCompusesView.propTypes = {
-  allStudents: PropTypes.array.isRequired
+  allCompuses: PropTypes.array.isRequired
 };
 
 export default AllCompusesView;

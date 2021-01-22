@@ -61,6 +61,7 @@ export const fetchAllStudentsThunk = () => dispatch => {
 export const fetchAllCompusesThunk = () => dispatch => {
   const data = [
     {
+      id: "1",
       name: "brooklyn college",
       image: "someURL"
     }
