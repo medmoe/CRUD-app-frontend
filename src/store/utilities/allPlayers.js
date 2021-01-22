@@ -1,3 +1,6 @@
+// Not been used
+
+
 import axios from 'axios';
 
 // ACTION TYPES;
@@ -19,6 +22,12 @@ export const fetchAllPlayersThunk = () => dispatch => {
     .then(players => dispatch(fetchAllPlayers(players)))
     .catch(err => console.log(err))
 }
+export const fetchAllCompusesThunk = () => dispatch => {
+  return axios
+  .get('/api/compuses')
+  .then(res => res.data)
+  .catch(err => console.error(err.message))
+}
 
 // REDUCER;
 const reducer = (state = [], action) => {
@@ -30,4 +39,4 @@ const reducer = (state = [], action) => {
   }
 }
 
-export default reducer;
+//export default reducer;
