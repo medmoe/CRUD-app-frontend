@@ -44,29 +44,19 @@ export const fetchAllPlayersThunk = () => dispatch => {
     .catch(err => console.log(err))*/
 }
 export const fetchAllStudentsThunk = () => dispatch => {
-  const data = [
-    {
-      id:"1",
-      firstName: "mohammed",
-      lastName: "salim"
-    },
-    {
-      id:"2",
-      firstName: "karim",
-      lastName: "kiki"
-    }
-  ]
-  return dispatch(fetchAllStudents(data));
+  
+  return axios
+  .get('http://localhost:1234/api/students')
+  .then(res => res.data.students)
+  .then(students => dispatch(fetchAllStudents(students)))
+  .catch(err => console.log(err))
 }
 export const fetchAllCompusesThunk = () => dispatch => {
-  const data = [
-    {
-      id: "1",
-      name: "brooklyn college",
-      image: "someURL"
-    }
-  ]
-  return dispatch(fetchAllCompuses(data));
+  return axios
+  .get('http://localhost:1234/api/campuses')
+  .then(res => res.data)
+  .then(compuses => dispatch(fetchAllCompuses(compuses)))
+  .catch(err => console.log(err))
 }
 
 // REDUCER;
