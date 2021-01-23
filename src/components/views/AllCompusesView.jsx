@@ -8,7 +8,7 @@ const AllCompusesView = props => {
     <div className="all-students">
       {props.allCompuses.map((item) => 
          <Campusdisplay key={item.id} name={item.name} 
-         image= {item.image} numberstudents= {item.numberstudents}/>)
+         image= {item.image} numberstudents= {item.numberstudents} id = {item.id}/>)
       }
     </div>
   );
