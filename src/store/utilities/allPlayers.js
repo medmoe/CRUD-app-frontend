@@ -1,12 +1,10 @@
-// Not been used
-
-
 import axios from 'axios';
 
 // ACTION TYPES;
 const FETCH_ALL_PLAYERS = "FETCH_ALL_PLAYERS";
 const FETCH_ALL_STUDENTS = "FETCH_ALL_STUDENTS";
 const FETCH_ALL_COMPUSES = "FETCH_ALL_COMPUSES";
+// const FETCH_SINGLE_CAMPUS = "FETCH_SINGLE_CAMPUS";
 
 // ACTION CREATORS;
 const fetchAllPlayers = players => {
@@ -27,6 +25,13 @@ const fetchAllCompuses = compuses => {
     payload: compuses
   }
 }
+
+// const fetchSingleCampus = campus => {
+//   return {
+//     type: FETCH_SINGLE_CAMPUS,
+//     payload: campus
+//   }
+// }
 
 // THUNK CREATORS;
 export const fetchAllPlayersThunk = () => dispatch => {
@@ -61,12 +66,7 @@ export const fetchAllCompusesThunk = () => dispatch => {
   .then(compuses => dispatch(fetchAllCompuses(compuses)))
   .catch(err => console.log(err))
 }
-export const fetchAllCompusesThunk = () => dispatch => {
-  return axios
-  .get('/api/compuses')
-  .then(res => res.data)
-  .catch(err => console.error(err.message))
-}
+
 
 // REDUCER;
 const reducer = (state = [] , action) => {
@@ -78,9 +78,11 @@ const reducer = (state = [] , action) => {
       return action.payload;
     case FETCH_ALL_COMPUSES:
       return action.payload;
+      // case FETCH_SINGLE_CAMPUS:
+      //   return action.payload;
     default:
       return state;
   }
 }
 
-//export default reducer;
+export default reducer;
