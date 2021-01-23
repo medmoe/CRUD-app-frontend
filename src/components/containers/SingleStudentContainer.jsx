@@ -6,12 +6,12 @@ import { SingleStudentView } from '../views'
 class SingleStudentContainer extends React.Component {
 
     componentDidMount() {
-        this.props.getStudent()
+        this.props.getStudent(this.props.match.params.studentid)
     }
 
     render() {
         return (
-            <SingleStudentView studentId = {this.props.match.params.studentid} student = {this.props.student} />
+            <SingleStudentView student = {this.props.student} />
         )
     }
 }
@@ -24,7 +24,7 @@ const mapStatetoProps = (state) => {
 
 const mapDispatchtoProps = (dispatch) => {
     return {
-        getStudent: () =>  dispatch(fetchSingleStudentThunk())
+        getStudent: (studentId) =>  dispatch(fetchSingleStudentThunk(studentId))
     }
 }
 

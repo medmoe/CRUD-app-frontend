@@ -12,23 +12,14 @@ const fetchSingleStudent = student => {
 }
 
 //thunk
-export const fetchSingleStudentThunk = () => dispatch => {
-    const sampleStudent = {
-        firstName: 'test',
-        lastName: 'testing',
-        email: 'test@gmail.com',
-        imageUrl: 'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg',
-        gpa: 3.5,
-        campus: 'Brooklyn College'
-    }
+export const fetchSingleStudentThunk = (id) => dispatch => {
 
-    return dispatch(fetchSingleStudent(sampleStudent))
-    //sample axios call while waiting for backend
-//     return axios
-//   .get('http://localhost:1234/api/students/:id')
-//   .then(res => res.data)
-//   .then(student => dispatch(fetchSingleStudent(student)))
-//   .catch(err => console.log(err))
+    //axios call to retrieve student by id from backend
+    return axios
+  .get(`http://localhost:1234/api/students/${id}`)
+  .then(res => res.data)
+  .then(student => dispatch(fetchSingleStudent(student[0])))
+  .catch(err => console.log(err))
 }
 
 const rootReducer = (state = [], action) => {
