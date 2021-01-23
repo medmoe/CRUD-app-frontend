@@ -4,6 +4,7 @@ import axios from 'axios';
 const FETCH_ALL_PLAYERS = "FETCH_ALL_PLAYERS";
 const FETCH_ALL_STUDENTS = "FETCH_ALL_STUDENTS";
 const FETCH_ALL_COMPUSES = "FETCH_ALL_COMPUSES";
+const ADD_NEW_CAMPUS = "ADD_NEW_CAMPUS";
 
 // ACTION CREATORS;
 const fetchAllPlayers = players => {
@@ -22,6 +23,14 @@ const fetchAllCompuses = compuses => {
   return {
     type: FETCH_ALL_COMPUSES,
     payload: compuses
+  }
+}
+
+const addNewCampus = campusinfo => {
+  
+  return {
+    type: ADD_NEW_CAMPUS,
+    payload: campusinfo
   }
 }
 
@@ -59,6 +68,10 @@ export const fetchAllCompusesThunk = () => dispatch => {
   .catch(err => console.log(err))
 }
 
+export const addNewCampusThunk = campusinfo => dispatch => {
+  return axios.post('http://localhost:1234/api/campuses',campusinfo)
+  .then(campus => dispatch(addNewCampus(campusinfo)))
+}
 
 // REDUCER;
 const reducer = (state = [] , action) => {
@@ -70,6 +83,8 @@ const reducer = (state = [] , action) => {
       return action.payload;
     case FETCH_ALL_COMPUSES:
       return action.payload;
+    case ADD_NEW_CAMPUS:
+      return [...state, action.payload]
     default:
       return state;
   }
