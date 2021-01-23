@@ -4,6 +4,7 @@ import axios from 'axios';
 const FETCH_ALL_PLAYERS = "FETCH_ALL_PLAYERS";
 const FETCH_ALL_STUDENTS = "FETCH_ALL_STUDENTS";
 const FETCH_ALL_COMPUSES = "FETCH_ALL_COMPUSES";
+const DELETE_CAMPUS = "DELETE_CAMPUS";
 
 // ACTION CREATORS;
 const fetchAllPlayers = players => {
@@ -22,6 +23,12 @@ const fetchAllCompuses = compuses => {
   return {
     type: FETCH_ALL_COMPUSES,
     payload: compuses
+  }
+}
+const deleteCampus = id => {
+  return {
+    type: DELETE_CAMPUS,
+    payload: id
   }
 }
 
@@ -58,7 +65,13 @@ export const fetchAllCompusesThunk = () => dispatch => {
   .then(compuses => dispatch(fetchAllCompuses(compuses)))
   .catch(err => console.log(err))
 }
-
+export const deleteCampusThunk = id => dispatch => {
+  return axios
+  .delete(`http://localhost:1234/api/campuses/${id}`)
+  .then(res => res.data)
+  .then(()=> dispatch(deleteCampus))
+  .catch(err => console.log(err))
+}
 
 // REDUCER;
 const reducer = (state = [] , action) => {
