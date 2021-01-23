@@ -5,8 +5,8 @@ const RoutesView = () => {
   return (
     <Switch>
       <Route exact path="/" component={AllPlayersContainer} />
-      <Route exact path="/all-students" component={AllStudentsContainer} />
-      <Route exact path="/all-compuses" component={AllCompusesContainer} />
+      <Route path="/all-students" component={AllStudentsContainer} />
+      <Route path="/all-compuses" component={AllCompusesContainer} />
     </Switch>
   )
 }
