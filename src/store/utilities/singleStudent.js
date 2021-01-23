@@ -2,12 +2,19 @@ import axios from 'axios'
 
 //Action types
 const FETCH_SINGLESTUDENT = 'FETCH_SINGLESTUDENT'
+const UPDATE_STUDENT = 'UPDATE_STUDENT'
 
 //Action creators
 const fetchSingleStudent = student => {
     return {
         type: FETCH_SINGLESTUDENT,
         payload: student
+    }
+}
+const updateSingleStudent = newStudent => {
+    return {
+        type: UPDATE_STUDENT,
+        payload: newStudent
     }
 }
 
@@ -22,10 +29,24 @@ export const fetchSingleStudentThunk = (id) => dispatch => {
   .catch(err => console.log(err))
 }
 
+export const updateSingleStudentThunk = studentObj => dispatch => {
+    //return dispatch(updateSingleStudent(studentObj))
+
+    return axios
+    .put(`http://localhost:1234/api/students/${studentObj.id}`, studentObj)
+    .then(newStudent => {
+        console.log(newStudent)
+        return dispatch(updateSingleStudent(studentObj))
+    })
+}
+
 const rootReducer = (state = [], action) => {
     switch (action.type) {
         case FETCH_SINGLESTUDENT:
             console.log('got student')
+            return action.payload
+        case UPDATE_STUDENT:
+            console.log('updating student')
             return action.payload
         default:
             console.log('default')

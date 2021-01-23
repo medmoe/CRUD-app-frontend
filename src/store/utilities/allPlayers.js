@@ -69,12 +69,10 @@ const reducer = (state = [] , action) => {
   switch (action.type) {
     case FETCH_ALL_STUDENTS:
       console.log("fetch all students");
-      return action.payload;
+      return [...action.payload];
     case FETCH_ALL_COMPUSES:
       return action.payload;
     case DELETE_STUDENT:
-      // console.log(action.payload)
-      // console.log(...state)
       return [...state.filter((student) => student.id != action.payload)]
     case DELETE_CAMPUS:
       return [...state.filter(campus => campus.id != action.payload)]
