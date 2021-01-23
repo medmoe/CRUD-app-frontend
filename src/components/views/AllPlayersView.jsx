@@ -4,12 +4,8 @@ import PropTypes from 'prop-types';
 
 const AllPlayersView = props => {
   return (
-    <div className="all-players">
-      {props.allPlayers.map(player => (
-        <div key={player.id}>
-          <h1>{player.firstName}</h1>
-        </div>
-      ))}
+    <div className="all-students">
+    <h1> Home PAGE</h1>
     </div>
   );
 };

@@ -1,16 +1,15 @@
 import React from 'react';
 import './styles/style.css';
 import PropTypes from 'prop-types';
+import Campusdisplay from './Campusdisplay'
 
 const AllCompusesView = props => {
   return (
-    <div className="all-compuses">
-      {props.allCompuses.map(compuse => (
-        <div key={compuse.id}>
-          <h1>{compuse.name}</h1>
-          <h1>{compuse.image} img</h1>
-        </div>
-      ))}
+    <div className="all-students">
+      {props.allCompuses.map((item) => 
+         <Campusdisplay key={item.id} name={item.name} 
+         image= {item.image} numberstudents= {item.numberstudents}/>)
+      }
     </div>
   );
 };
@@ -20,3 +19,6 @@ AllCompusesView.propTypes = {
 };
 
 export default AllCompusesView;
+
+
+

@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom'
 const AllStudentsView = props => {
   return (
     <div className="all-students">
+       
       {props.allStudents.map(student => (
         <div key={student.id}>
           <Link to = {`/students/${student.id}`}>
