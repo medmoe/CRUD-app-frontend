@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchAllCompusesThunk } from '../../thunks';
+import { fetchAllCompusesThunk, deleteCampusThunk} from '../../thunks';
 import { AllCompusesView } from '../views';
 
 // Smart container;
@@ -10,8 +10,11 @@ class AllCompusesContainer extends Component {
     this.props.fetchAllCompuses();
   }
 
+  
+
   render() {
-    return <AllCompusesView allCompuses={this.props.allCompuses} />
+    return <AllCompusesView allCompuses={this.props.allCompuses}
+                            handleDelete={this.props.deleteCampus} />
   }
 }
 
@@ -25,14 +28,16 @@ const mapState = state => {
 // Map dispatch to props;
 const mapDispatch = dispatch => {
   return {
-    fetchAllCompuses: () => dispatch(fetchAllCompusesThunk())
+    fetchAllCompuses: () => dispatch(fetchAllCompusesThunk()),
+    deleteCampus: id => dispatch(deleteCampusThunk(id))
   }
 }
 
 // Type check props;
 AllCompusesContainer.propTypes = {
   allCompuses: PropTypes.array.isRequired,
-  fetchAllCompuses: PropTypes.func.isRequired
+  fetchAllCompuses: PropTypes.func.isRequired,
+  deleteCampus: PropTypes.func.isRequired
 }
 
 // Export our store-connected container by default;
