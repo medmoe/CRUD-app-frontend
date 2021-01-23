@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchAllStudentsThunk } from '../../thunks';
+import { fetchAllStudentsThunk, deleteSingleStudentThunk } from '../../thunks';
 import { AllStudentsView } from '../views';
 
 // Smart container;
@@ -11,7 +11,7 @@ class AllStudentsContainer extends Component {
   }
 
   render() {
-    return <AllStudentsView allStudents={this.props.allPlayers} />
+    return <AllStudentsView allStudents={this.props.allPlayers} deleteStudent = {this.props.deleteStudent} />
   }
 }
 
@@ -25,7 +25,8 @@ const mapState = state => {
 // Map dispatch to props;
 const mapDispatch = dispatch => {
   return {
-    fetchAllStudents: () => dispatch(fetchAllStudentsThunk())
+    fetchAllStudents: () => dispatch(fetchAllStudentsThunk()),
+     deleteStudent: (studentId) => dispatch(deleteSingleStudentThunk(studentId))
   }
 }
 
