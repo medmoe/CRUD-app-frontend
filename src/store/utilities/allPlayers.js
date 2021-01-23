@@ -1,18 +1,13 @@
 import axios from 'axios';
 
 // ACTION TYPES;
-const FETCH_ALL_PLAYERS = "FETCH_ALL_PLAYERS";
 const FETCH_ALL_STUDENTS = "FETCH_ALL_STUDENTS";
 const FETCH_ALL_COMPUSES = "FETCH_ALL_COMPUSES";
 const ADD_NEW_CAMPUS = "ADD_NEW_CAMPUS";
+const DELETE_STUDENT = "DELETE_STUDENT";
+const DELETE_CAMPUS = "DELETE_CAMPUS";
 
 // ACTION CREATORS;
-const fetchAllPlayers = players => {
-  return {
-    type: FETCH_ALL_PLAYERS,
-    payload: players
-  }
-}
 const fetchAllStudents = students => {
   return {
     type: FETCH_ALL_STUDENTS,
@@ -34,24 +29,20 @@ const addNewCampus = campusinfo => {
   }
 }
 
-// THUNK CREATORS;
-export const fetchAllPlayersThunk = () => dispatch => {
-  const object = [
-    {
-      id:"1",
-      firstName: "mohammed"
-    },
-    {
-      id:"2",
-      firstName: "karim"
-    }
-  ]
-  return dispatch(fetchAllPlayers(object));/*axios
-    .get('/api/players')
-    .then(res => res.data)
-    .then(players => dispatch(fetchAllPlayers(players)))
-    .catch(err => console.log(err))*/
+const deleteStudent = (payload) => {
+  return {
+      type: DELETE_STUDENT,
+      payload
+  }
 }
+const deleteCampus = id => {
+  return {
+    type: DELETE_CAMPUS,
+    payload: id
+  }
+}
+
+//THUNK CREATORS
 export const fetchAllStudentsThunk = () => dispatch => {
   
   return axios
@@ -71,13 +62,24 @@ export const fetchAllCompusesThunk = () => dispatch => {
 export const addNewCampusThunk = campusinfo => dispatch => {
   return axios.post('http://localhost:1234/api/campuses',campusinfo)
   .then(campus => dispatch(addNewCampus(campusinfo)))
+export const deleteSingleStudentThunk = id => (dispatch) => {
+  console.log(`deleted student ${id}`)
+  axios.delete(`http://localhost:1234/api/students/${id}`)
+  .then(() =>  dispatch(deleteStudent(id)))
+  .catch(error => console.log(error))
+
+}
+
+export const deleteCampusThunk = id => dispatch => {
+  return axios
+  .delete(`http://localhost:1234/api/campuses/${id}`)
+  .then(()=> dispatch(deleteCampus(id)))
+  .catch(err => console.log(err))
 }
 
 // REDUCER;
 const reducer = (state = [] , action) => {
   switch (action.type) {
-    case FETCH_ALL_PLAYERS:
-      return action.payload;
     case FETCH_ALL_STUDENTS:
       console.log("fetch all students");
       return action.payload;
@@ -85,6 +87,10 @@ const reducer = (state = [] , action) => {
       return action.payload;
     case ADD_NEW_CAMPUS:
       return [...state, action.payload]
+    case DELETE_STUDENT:
+      return [...state.filter((student) => student.id != action.payload)]
+    case DELETE_CAMPUS:
+      return [...state.filter(campus => campus.id != action.payload)]
     default:
       return state;
   }
