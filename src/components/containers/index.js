@@ -3,3 +3,4 @@ export { default as AllPlayersContainer } from './AllPlayersContainer';
 export { default as AllStudentsContainer} from './AllStudentsContainer';
 export { default as AllCompusesContainer} from './AllCompusesContainer';
 export { default as SingleStudentContainer } from './SingleStudentContainer';
+export { default as SingleCampusContainer} from './SingleCampusContainer';
