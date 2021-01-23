@@ -19,7 +19,6 @@ class AddCampusContainer extends Component {
   }
 
   handlesubmit =()=>{
-   console.log(this.state);
    this.props.addNewCampus(this.state)
   }
 
