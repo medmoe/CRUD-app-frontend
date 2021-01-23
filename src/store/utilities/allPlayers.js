@@ -3,6 +3,7 @@ import axios from 'axios';
 // ACTION TYPES;
 const FETCH_ALL_STUDENTS = "FETCH_ALL_STUDENTS";
 const FETCH_ALL_COMPUSES = "FETCH_ALL_COMPUSES";
+const ADD_NEW_CAMPUS = "ADD_NEW_CAMPUS";
 const DELETE_STUDENT = "DELETE_STUDENT";
 const DELETE_CAMPUS = "DELETE_CAMPUS";
 
@@ -19,6 +20,15 @@ const fetchAllCompuses = compuses => {
     payload: compuses
   }
 }
+
+const addNewCampus = campusinfo => {
+  
+  return {
+    type: ADD_NEW_CAMPUS,
+    payload: campusinfo
+  }
+}
+
 const deleteStudent = (payload) => {
   return {
       type: DELETE_STUDENT,
@@ -49,6 +59,9 @@ export const fetchAllCompusesThunk = () => dispatch => {
   .catch(err => console.log(err))
 }
 
+export const addNewCampusThunk = campusinfo => dispatch => {
+  return axios.post('http://localhost:1234/api/campuses',campusinfo)
+  .then(campus => dispatch(addNewCampus(campusinfo)))
 export const deleteSingleStudentThunk = id => (dispatch) => {
   console.log(`deleted student ${id}`)
   axios.delete(`http://localhost:1234/api/students/${id}`)
@@ -72,9 +85,9 @@ const reducer = (state = [] , action) => {
       return action.payload;
     case FETCH_ALL_COMPUSES:
       return action.payload;
+    case ADD_NEW_CAMPUS:
+      return [...state, action.payload]
     case DELETE_STUDENT:
-      // console.log(action.payload)
-      // console.log(...state)
       return [...state.filter((student) => student.id != action.payload)]
     case DELETE_CAMPUS:
       return [...state.filter(campus => campus.id != action.payload)]
