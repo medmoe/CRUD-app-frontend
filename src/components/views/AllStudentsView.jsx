@@ -13,17 +13,17 @@ class AllStudentsView extends React.Component{
       <div >
        
           <h1>List of students on campus</h1>
-          <button onClick={this.props.addStudent}>add students</button>
+          <button onClick={this.props.addStudent} className="addButton">add students</button>
      
         <div>
         {this.props.allStudents.map(student => (
           <div key={student.id} className="students-container">
             <div>
-              <Link to = {`/students/${student.id}`}>
-                <div className="student-image">
-                  <img src={student.imageURL} alt="student image"/>
-                </div>
-              </Link>
+            <Link to = {`/students/${student.id}`}>
+            <div className="student-image">
+                  <img src={student.imageUrl} alt="student image" className="images"/> 
+              </div> 
+                </Link>
               <div className="student-info">
                 <p>Name: {student.firstName}, {student.lastName}</p>
                 <p>Campus: {student.campus ? student.campus.name : 'No campus available'}</p>
