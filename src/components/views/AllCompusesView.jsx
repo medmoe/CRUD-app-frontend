@@ -13,10 +13,11 @@ class AllCompusesView extends React.Component{
   }
   render(){
     return (
-      <div className="all-students">
+      <div >
         <Link to='/add-campus' > <button className="addButton">add a campus</button> </Link>
+       <div> 
         {this.props.allCompuses.map((item) =>
-          <div> 
+          <div className="students-container"> 
            <Campusdisplay key={item.id} name={item.name} 
            image= {item.image} numberstudents= {item.numberstudents} id = {item.id}
            handleDelete={this.handleDelete}
@@ -25,7 +26,7 @@ class AllCompusesView extends React.Component{
            </div>)
            
         }
-        
+       </div> 
       </div>
     );
   }

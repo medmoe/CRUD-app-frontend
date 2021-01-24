@@ -10,12 +10,12 @@ class AllStudentsView extends React.Component{
   }
   render() {
     return (
-      <div className="all-students">
-        <div>
+      <div >
+       
           <h1>List of students on campus</h1>
           <button onClick={this.props.addStudent}>add students</button>
-        </div>
-        <div className="students-list">
+     
+        <div>
         {this.props.allStudents.map(student => (
           <div key={student.id} className="students-container">
             <div>
