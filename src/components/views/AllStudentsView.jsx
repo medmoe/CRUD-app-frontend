@@ -26,7 +26,7 @@ class AllStudentsView extends React.Component{
               </Link>
               <div className="student-info">
                 <p>Name: {student.firstName}, {student.lastName}</p>
-                <p>Campus: {student.campus !== null ? student.campus.name : 'No campus available'}</p>
+                <p>Campus: {student.campus ? student.campus.name : 'No campus available'}</p>
               </div>
               <button onClick = {this.handleDelete} value = {student.id}>Delete Student</button>
             </div>
