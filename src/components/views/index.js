@@ -5,3 +5,4 @@ export { default as AllCompusesView} from './AllCompusesView';
 export { default as NavBar} from './navBar';
 export { default as SingleStudentView} from './SingleStudent';
 export { default as SingleCampusView} from './SingleCampusView';
+export { default as AddStudentView } from './AddStudentView';
