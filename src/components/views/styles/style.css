@@ -27,3 +27,9 @@
   flex: 1;
   margin: 10px;
 }
+.addButton{
+  height: 30px;
+  margin: 10px;
+  border-radius: 0.4em;
+  background-color:aquamarine;
+}

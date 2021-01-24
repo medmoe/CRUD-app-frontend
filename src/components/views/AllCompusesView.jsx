@@ -3,6 +3,8 @@ import './styles/style.css';
 import PropTypes from 'prop-types';
 import Campusdisplay from './Campusdisplay'
 
+import {Link} from 'react-router-dom'
+
 class AllCompusesView extends React.Component{
   
  
@@ -12,6 +14,7 @@ class AllCompusesView extends React.Component{
   render(){
     return (
       <div className="all-students">
+        <Link to='/add-campus' > <button className="addButton">add a campus</button> </Link>
         {this.props.allCompuses.map((item) => 
            <Campusdisplay key={item.id} name={item.name} 
            image= {item.image} numberstudents= {item.numberstudents} id = {item.id}
