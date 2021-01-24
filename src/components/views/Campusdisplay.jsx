@@ -13,7 +13,6 @@ class Campusdisplay extends Component{
                 <Link to = {`/campuses/${this.props.id}`}><h1>{this.props.name}</h1></Link>
                 <div> {this.props.image}</div>
                 <div> {this.props.numberstudents}</div>
-                <button className="edit"> edit </button>
                 <button className="delete" onClick={this.handleDelete} value={this.props.id}> delete </button>
             </div>
         );
