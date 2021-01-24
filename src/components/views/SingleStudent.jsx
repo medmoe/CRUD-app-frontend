@@ -14,7 +14,8 @@ class SingleStudent extends React.Component {
             gpa: this.props.student,
             campusId: null,
             edit: false,
-            campus: null
+            campus: null,
+            imageUrl: ''
         }
     }
 
@@ -41,7 +42,8 @@ class SingleStudent extends React.Component {
             edit: true,
             id: this.props.student.id,
             campusId: this.props.student.campus.id,
-            campus: this.props.student.campus
+            campus: this.props.student.campus,
+            imageurl: this.props.student.imageUrl
         })
     }
     render(){
@@ -68,25 +70,25 @@ class SingleStudent extends React.Component {
                     <div className = 'studentInput'>
                     <label>
                         First name:
-                        <input type = 'text' onChange = {this.handleChange} name = 'firstName' required = {true} defaultValue = {this.props.student.firstName} />
+                        <input type = 'text' onChange = {this.handleChange} name = 'firstName' required = {true} placeholder = {this.props.student.firstName} />
                     </label>
                     </div>
                     <div className = 'studentInput' >
                     <label>
                         Last name:
-                        <input type = 'text' onChange = {this.handleChange} name = 'lastName' required = {true}  defaultValue = {this.props.student.lastName} />
+                        <input type = 'text' onChange = {this.handleChange} name = 'lastName' required = {true}  placeholder = {this.props.student.lastName} />
                     </label>
                     </div>
                     <div className = 'studentInput'>
                     <label>
                         Email:
-                        <input type = 'email' onChange = {this.handleChange} name = 'email' required = {true}  defaultValue = {this.props.student.email} />
+                        <input type = 'email' onChange = {this.handleChange} name = 'email' required = {true}  placeholder = {this.props.student.email} />
                     </label>
                     </div>
                     <div className = 'studentInput'>
                     <label>
                         GPA:
-                        <input type = 'number' min = {0} max = {4} onChange = {this.handleChange} name = 'gpa' defaultValue = {this.props.student.gpa} />
+                        <input type = 'number' min = {0} max = {4} onChange = {this.handleChange} name = 'gpa' placeholder = {this.props.student.gpa} />
                     </label>
                     </div>
                     <div>
