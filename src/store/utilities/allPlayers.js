@@ -109,18 +109,16 @@ export const addNewCampusThunk = campusinfo => dispatch => {
   .then(campus => dispatch(addNewCampus(campusinfo)))
 }
 
-export const updateCampusThunk = campus => {
+export const updateCampusThunk = campus => dispatch => {
   console.log(campus);
-  return (dispatch) => {
-      axios.put(`http://localhost:1234/api/campuses/${campus.id}`, campus)
+  return axios.put(`http://localhost:1234/api/campuses/${campus.id}`, campus)
       .then( response => {
-          console.log(response);
-          dispatch(updateCampus(response));
+          console.log(campus);
+          dispatch(updateCampus(campus));
       })
       .catch(error => {
           console.log(error.message);
       })
-  }
 }
 
 // REDUCER;
@@ -145,7 +143,7 @@ const reducer = (state = [] , action) => {
       console.log("add a student");
       return [...state, action.payload];
     case UPDATE_CAMPUS:
-        return action.payload;
+        return [...state.map(campus => campus.id !== action.payload.id ?  campus : action.payload )];
     default:
       return state;
   }
