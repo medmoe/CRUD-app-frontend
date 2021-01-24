@@ -64,7 +64,7 @@ export const addStudentThunk = studentObject => {
       axios.post('http://localhost:1234/api/students', studentObject )
       .then( response => {
           console.log(response);
-          dispatch(addastudent(studentObject));
+          dispatch(addastudent(response.data));
       })
       .catch( error => {
           console.log(error.message);
