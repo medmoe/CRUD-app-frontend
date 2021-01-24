@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 //import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {addNewCampusThunk} from '../../thunks';
+import {Link} from 'react-router-dom'
 
 // Smart container;
 class AddCampusContainer extends Component {
@@ -37,7 +38,7 @@ class AddCampusContainer extends Component {
            <input name="address" value={this.state.address} placeholder="Campus address" onChange={(e)=>this.OnchageHandler(e)}/> <br />
            <label> Description:</label>
            <input name="description" value={this.state.description} placeholder="description" onChange={(e)=>this.OnchageHandler(e)}/> <br />
-           <input type="submit" /> 
+           <input type="submit" />   
         </form>
         
     </div>
