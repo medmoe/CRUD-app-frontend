@@ -33,3 +33,25 @@
   border-radius: 0.4em;
   background-color:aquamarine;
 }
+.students-container{
+  border: 2px red solid;
+  width: 220px;
+  height: 260px;
+  float: left;
+  margin: 30px 30px;
+  padding: 10px 10px;
+  
+}
+.students-list{
+  display: flex;
+}
+.student-image{
+  border: 2px blue solid;
+  height: 180px;
+}
+.student-info p {
+  font-size: 16px;
+  font-weight: bold;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-decoration: none;
+}
