@@ -2,4 +2,3 @@
 export * from '../store/utilities/singleStudent'
 export * from '../store/utilities/singleCampus';
 export * from '../store/utilities/allPlayers';
-export * from '../store/utilities/updateCampus';

@@ -46,22 +46,21 @@ class AllCompusesContainer extends Component {
   }
   handleSubmit(event){
     event.preventDefault();
+    this.setState({showForm: false})
     this.props.updateCampus(this.state);
 
   }
    render() {
-    if(this.state.showForm){
-      return <EditCampusView  name = {this.state.name} 
+      return this.state.showForm? <EditCampusView  name = {this.state.name} 
                               address= {this.state.address}
                               description={this.state.description}
                               imageURL={this.state.imageURL}
                               handleChange={this.handleChange} 
                               handleSubmit={this.handleSubmit}/>
-    }else{
-    return <AllCompusesView allCompuses={this.props.allCompuses}
+    :
+      <AllCompusesView allCompuses={this.props.allCompuses}
                             handleDelete={this.props.deleteCampus}
                             editCampus={this.editCampus} />
-    }
   }
 }
 
