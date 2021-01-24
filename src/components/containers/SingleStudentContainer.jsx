@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchSingleStudentThunk } from '../../thunks'
+import { fetchSingleStudentThunk, updateSingleStudentThunk } from '../../thunks'
 import { SingleStudentView } from '../views'
 
 class SingleStudentContainer extends React.Component {
@@ -11,7 +11,7 @@ class SingleStudentContainer extends React.Component {
 
     render() {
         return (
-            <SingleStudentView student = {this.props.student} />
+            <SingleStudentView student = {this.props.student} updateStudent = {this.props.updateStudent} />
         )
     }
 }
@@ -24,7 +24,8 @@ const mapStatetoProps = (state) => {
 
 const mapDispatchtoProps = (dispatch) => {
     return {
-        getStudent: (studentId) =>  dispatch(fetchSingleStudentThunk(studentId))
+        getStudent: (studentId) =>  dispatch(fetchSingleStudentThunk(studentId)),
+        updateStudent: (student) => dispatch(updateSingleStudentThunk(student))
     }
 }
 
