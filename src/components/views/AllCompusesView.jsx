@@ -15,13 +15,17 @@ class AllCompusesView extends React.Component{
     return (
       <div className="all-students">
         <Link to='/add-campus' > <button className="addButton">add a campus</button> </Link>
-        {this.props.allCompuses.map((item) => 
+        {this.props.allCompuses.map((item) =>
+          <div> 
            <Campusdisplay key={item.id} name={item.name} 
            image= {item.image} numberstudents= {item.numberstudents} id = {item.id}
            handleDelete={this.handleDelete}
-           />)
+           />
+           <button onClick={this.props.editCampus} name={item.id}>edit campus</button>
+           </div>)
            
         }
+        
       </div>
     );
   }

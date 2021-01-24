@@ -1,20 +1,67 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchAllCompusesThunk, deleteCampusThunk} from '../../thunks';
-import { AllCompusesView } from '../views';
+import { fetchAllCompusesThunk, deleteCampusThunk, updateCampusThunk} from '../../thunks';
+import { AllCompusesView, EditCampusView } from '../views';
 
 // Smart container;
 class AllCompusesContainer extends Component {
+  constructor(){
+    super();
+    this.state = {
+      showForm: false,
+      id: '',
+      name:'',
+      address: '',
+      description: '',
+      imageURL: ''
+    }
+    this.editCampus = this.editCampus.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
   componentDidMount() {
     this.props.fetchAllCompuses();
+  }  
+  editCampus(event){
+    this.props.allCompuses.forEach(element => {
+      if(element.id == event.target.name){
+        let {id, name , address, description , imageURL} = element;
+        this.setState({
+          showForm: true,
+          id: id,
+          name: name,
+          address: address,
+          description: description,
+          imageURL: imageURL
+        })
+      }
+    });
   }
+  handleChange(event){
+    this.setState({
+      [event.target.name] : event.target.value
+    })
+    
+  }
+  handleSubmit(event){
+    event.preventDefault();
+    this.props.updateCampus(this.state);
 
-  
-
-  render() {
+  }
+   render() {
+    if(this.state.showForm){
+      return <EditCampusView  name = {this.state.name} 
+                              address= {this.state.address}
+                              description={this.state.description}
+                              imageURL={this.state.imageURL}
+                              handleChange={this.handleChange} 
+                              handleSubmit={this.handleSubmit}/>
+    }else{
     return <AllCompusesView allCompuses={this.props.allCompuses}
-                            handleDelete={this.props.deleteCampus} />
+                            handleDelete={this.props.deleteCampus}
+                            editCampus={this.editCampus} />
+    }
   }
 }
 
@@ -29,7 +76,8 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     fetchAllCompuses: () => dispatch(fetchAllCompusesThunk()),
-    deleteCampus: id => dispatch(deleteCampusThunk(id))
+    deleteCampus: id => dispatch(deleteCampusThunk(id)),
+    updateCampus: camp => dispatch(updateCampusThunk(camp)),
   }
 }
 
