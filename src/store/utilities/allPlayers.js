@@ -71,6 +71,7 @@ export const addStudentThunk = studentObject => {
       })
   }
 }
+
 export const fetchAllStudentsThunk = () => dispatch => {
   
   return axios
@@ -79,6 +80,7 @@ export const fetchAllStudentsThunk = () => dispatch => {
   .then(students => dispatch(fetchAllStudents(students)))
   .catch(err => console.log(err))
 }
+
 export const fetchAllCompusesThunk = () => dispatch => {
   return axios
   .get('http://localhost:1234/api/campuses')
@@ -103,7 +105,6 @@ export const deleteCampusThunk = id => dispatch => {
 }
 
 //add
-
 export const addNewCampusThunk = campusinfo => dispatch => {
   return axios.post('http://localhost:1234/api/campuses',campusinfo)
   .then(campus => dispatch(addNewCampus(campusinfo)))
@@ -121,29 +122,52 @@ export const updateCampusThunk = campus => dispatch => {
       })
 }
 
+const initialState = {
+  allCampuses: [],
+  allStudents: []
+}
+
 // REDUCER;
-const reducer = (state = [] , action) => {
+const reducer = (state = initialState , action) => {
   switch (action.type) {
     case FETCH_ALL_STUDENTS:
-      console.log("fetch all students");
-      return action.payload;
+      return {
+        ...state, 
+        allStudents: action.payload
+      };
     case FETCH_ALL_COMPUSES:
-      return action.payload;
+      return {
+        ...state, 
+        allCampuses: action.payload
+      };
     case DELETE_STUDENT:
-      // console.log(action.payload)
-      // console.log(...state)
-      return [...state.filter((student) => student.id != action.payload)]
+      return {
+        ...state, 
+        allStudents: state.allStudents.filter((student) => student.id != action.payload)
+      }
     case DELETE_CAMPUS:
-      return [...state.filter(campus => campus.id != action.payload)]
+      return {
+        ...state, 
+        allCampuses: state.allCampuses.filter(campus => campus.id != action.payload)
+      }
     
     //add  
     case ADD_NEW_CAMPUS:
-      return [...state, action.payload]
+      return {
+        ...state, 
+        allCampuses: [...state.allCampuses, action.payload]
+      };
     case ADD_STUDENT:
       console.log("add a student");
-      return [...state, action.payload];
+      return  {
+        ...state, 
+        allStudents: [...state.allStudents, action.payload]
+      };
     case UPDATE_CAMPUS:
-        return [...state.map(campus => campus.id !== action.payload.id ?  campus : action.payload )];
+        return {
+          ...state,
+          allCampuses: state.allCampuses.map(campus => campus.id !== action.payload.id ?  campus : action.payload )
+        };
     default:
       return state;
   }

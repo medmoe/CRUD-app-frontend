@@ -67,7 +67,7 @@ class AllCompusesContainer extends Component {
 // Map state to props;
 const mapState = state => {
   return {
-    allCompuses: state.allPlayers
+    allCompuses: state.allPlayers.allCampuses
   }
 }
 
