@@ -3,6 +3,7 @@ import './styles/style.css';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom'
 
+
 const AllStudentsView = props => {
   return (
     <div className="all-students">
