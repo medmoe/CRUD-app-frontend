@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addStudentThunk, fetchAllStudentsThunk } from '../../thunks';
+import { addStudentThunk, fetchAllStudentsThunk, deleteSingleStudentThunk } from '../../thunks';
 import { AllStudentsView, AddStudentView } from '../views';
 import { Switch } from 'react-router-dom';
 
@@ -49,7 +49,8 @@ class AllStudentsContainer extends Component {
                              handleChange = {this.handleChange} />
     }else{
       return <AllStudentsView allStudents={this.props.allPlayers}
-                              addStudent={this.addStudent} />
+                              addStudent={this.addStudent}
+                              deleteStudent = {this.props.deleteStudent} />
     }
   }
 }
@@ -63,6 +64,7 @@ const mapState = state => {
 // Map dispatch to props;
 const mapDispatch = dispatch => {
   return {
+    deleteStudent: (id) => dispatch(deleteSingleStudentThunk(id)),
     fetchAllStudents: () => dispatch(fetchAllStudentsThunk()),
     addStudent: (student) => dispatch(addStudentThunk(student))
     } 
