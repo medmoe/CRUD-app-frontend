@@ -90,6 +90,12 @@ class SingleStudent extends React.Component {
                     <input type = 'number' min = {0} max = {4} onChange = {this.handleChange} name = 'gpa' placeholder = {this.props.student.gpa} />
                 </label>
                 </div>
+                <select>
+                    <option value = {this.props.student.campusId}>Select A School</option>
+                    {this.props.campuses.map((campus, index) => {
+                        return <option key = {index} value = {campus.id}>{campus.name}</option>
+                    })}
+                </select>
                 <div>
                     <input type = 'submit' />
                 </div>
