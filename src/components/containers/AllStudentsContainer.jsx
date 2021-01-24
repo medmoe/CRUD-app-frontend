@@ -33,8 +33,6 @@ class AllStudentsContainer extends Component {
     this.setState({
       showForm: false
     })
-    console.log(window.location);
-    window.location.reload();
 
   }
   handleChange(event){

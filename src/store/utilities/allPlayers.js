@@ -6,8 +6,15 @@ const FETCH_ALL_COMPUSES = "FETCH_ALL_COMPUSES";
 const DELETE_STUDENT = "DELETE_STUDENT";
 const DELETE_CAMPUS = "DELETE_CAMPUS";
 const ADD_NEW_CAMPUS = "ADD_NEW_CAMPUS"; // add
+const ADD_STUDENT = "ADD_STUDENT";
 
 // ACTION CREATORS;
+const addastudent = student => {
+  return {
+      type: ADD_STUDENT,
+      payload: student
+  }
+}
 const fetchAllStudents = students => {
   return {
     type: FETCH_ALL_STUDENTS,
@@ -43,6 +50,19 @@ const addNewCampus = campusinfo => {
 }
 
 //THUNK CREATORS
+export const addStudentThunk = studentObject => {
+  console.log(studentObject);
+  return (dispatch) => {
+      axios.post('http://localhost:1234/api/students', studentObject )
+      .then( response => {
+          console.log(response);
+          dispatch(addastudent(studentObject));
+      })
+      .catch( error => {
+          console.log(error.message);
+      })
+  }
+}
 export const fetchAllStudentsThunk = () => dispatch => {
   
   return axios
@@ -99,6 +119,9 @@ const reducer = (state = [] , action) => {
     //add  
     case ADD_NEW_CAMPUS:
       return [...state, action.payload]
+    case ADD_STUDENT:
+      console.log("add a student");
+      return [...state, action.payload];
     default:
       return state;
   }
