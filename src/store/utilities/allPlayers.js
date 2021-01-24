@@ -7,6 +7,7 @@ const DELETE_STUDENT = "DELETE_STUDENT";
 const DELETE_CAMPUS = "DELETE_CAMPUS";
 const ADD_NEW_CAMPUS = "ADD_NEW_CAMPUS"; // add
 const ADD_STUDENT = "ADD_STUDENT";
+const UPDATE_CAMPUS = "UPDATE_CAMPUS";
 
 // ACTION CREATORS;
 const addastudent = student => {
@@ -46,6 +47,13 @@ const addNewCampus = campusinfo => {
   return {
     type: ADD_NEW_CAMPUS,
     payload: campusinfo
+  }
+}
+
+const updateCampus = campus => {
+  return {
+      type: UPDATE_CAMPUS,
+      payload: campus
   }
 }
 
@@ -101,6 +109,20 @@ export const addNewCampusThunk = campusinfo => dispatch => {
   .then(campus => dispatch(addNewCampus(campusinfo)))
 }
 
+export const updateCampusThunk = campus => {
+  console.log(campus);
+  return (dispatch) => {
+      axios.put(`http://localhost:1234/api/campuses/${campus.id}`, campus)
+      .then( response => {
+          console.log(response);
+          dispatch(updateCampus(response));
+      })
+      .catch(error => {
+          console.log(error.message);
+      })
+  }
+}
+
 // REDUCER;
 const reducer = (state = [] , action) => {
   switch (action.type) {
@@ -122,6 +144,8 @@ const reducer = (state = [] , action) => {
     case ADD_STUDENT:
       console.log("add a student");
       return [...state, action.payload];
+    case UPDATE_CAMPUS:
+        return action.payload;
     default:
       return state;
   }
