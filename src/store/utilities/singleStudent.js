@@ -35,7 +35,8 @@ export const updateSingleStudentThunk = studentObj => dispatch => {
     return axios
     .put(`http://localhost:1234/api/students/${studentObj.id}`, studentObj)
     .then(newStudent => {
-        console.log(newStudent)
+        console.log('updated Student:')
+        console.log(studentObj)
         return dispatch(updateSingleStudent(studentObj))
     })
 }
@@ -46,7 +47,8 @@ const rootReducer = (state = [], action) => {
             console.log('got student')
             return action.payload
         case UPDATE_STUDENT:
-            console.log('updating student')
+            console.log('state:')
+            console.log(state)
             return action.payload
         default:
             console.log('default')

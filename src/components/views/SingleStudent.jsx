@@ -14,8 +14,7 @@ class SingleStudent extends React.Component {
             gpa: this.props.student,
             campusId: null,
             edit: false,
-            campus: null,
-            imageUrl: ''
+            campus: null
         }
     }
 
@@ -43,7 +42,7 @@ class SingleStudent extends React.Component {
             id: this.props.student.id,
             campusId: this.props.student.campus.id,
             campus: this.props.student.campus,
-            imageurl: this.props.student.imageUrl
+            imageUrl: this.props.student.imageUrl
         })
     }
     render(){
