@@ -46,7 +46,6 @@ const rootReducer = (state = [], action) => {
         case UPDATE_STUDENT:
             return action.payload
         default:
-            console.log('default')
             return state;
     }
 }
