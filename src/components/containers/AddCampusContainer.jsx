@@ -26,20 +26,30 @@ class AddCampusContainer extends Component {
 
   render() {
     return (
-      <div className="all-students">
+      <div>
 
-      <h1> Add Campus Page</h1> 
+      <h1 className="display-3"> Add Campus Page</h1> 
+      <div className="container updateCampus">
         <form onSubmit={this.handlesubmit}>
-           <label> Name:</label>
-           <input name="name" value={this.state.name} placeholder="Campus name" onChange={(e)=>this.OnchageHandler(e)}/> <br />
-           <label> Image URL:</label>
-           <input name="imageUrl" value={this.state.imageUrl} placeholder="image url" onChange={(e)=>this.OnchageHandler(e)}/> <br />
-           <label> Address:</label>
-           <input name="address" value={this.state.address} placeholder="Campus address" onChange={(e)=>this.OnchageHandler(e)}/> <br />
-           <label> Description:</label>
-           <input name="description" value={this.state.description} placeholder="description" onChange={(e)=>this.OnchageHandler(e)}/> <br />
-           <input type="submit" />   
+           <div className="form-group">
+            <label> Name:</label> <br />
+            <input name="name" value={this.state.name} placeholder="Campus name" onChange={(e)=>this.OnchageHandler(e)} className="form-control"/> 
+           </div>
+           <div className="form-group">
+           <label> Image URL:</label> <br />
+           <input name="imageUrl" value={this.state.imageUrl} placeholder="image url" onChange={(e)=>this.OnchageHandler(e)}  className="form-control"/> 
+           </div>
+            <div className="form-group">
+              <label> Address:</label> <br />
+              <input name="address" value={this.state.address} placeholder="Campus address" onChange={(e)=>this.OnchageHandler(e)}  className="form-control"/>
+            </div> 
+           <div className="form-group">
+            <label> Description:</label> <br />
+            <input name="description" value={this.state.description} placeholder="description" onChange={(e)=>this.OnchageHandler(e)}  className="form-control"/> 
+           </div>
+           <input type="submit" className="btn btn-primary"/>   
         </form>
+      </div>
         
     </div>
     );
