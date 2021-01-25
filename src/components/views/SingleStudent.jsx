@@ -14,7 +14,8 @@ class SingleStudent extends React.Component {
             gpa: this.props.student,
             campusId: null,
             edit: false,
-             campus: null
+            campus: null,
+            imageUrl: ''
         }
     }
 
@@ -90,6 +91,14 @@ class SingleStudent extends React.Component {
                     <input type = 'email' onChange = {this.handleChange} name = 'email' required = {true}  placeholder = {this.props.student.email} />
                 </label>
                 </div>
+
+                <div className = 'studentInput'>
+                <label>
+                    Image Url:
+                    <input type = 'text' onChange = {this.handleChange} name = 'imageUrl' required = {false}  placeholder = "Add an image link" />
+                </label>
+                </div>
+
                 <div className = 'studentInput'>
                 <label>
                     GPA:
