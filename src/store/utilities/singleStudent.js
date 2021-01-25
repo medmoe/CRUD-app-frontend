@@ -34,9 +34,7 @@ export const updateSingleStudentThunk = studentObj => dispatch => {
     return axios
     .put(`http://localhost:1234/api/students/${studentObj.id}`, studentObj)
     .then(newStudent => {
-        console.log('updated Student:')
-        console.log(studentObj)
-        return dispatch(updateSingleStudent(studentObj))
+        return dispatch(updateSingleStudent(newStudent.data.student))
     })
 }
 

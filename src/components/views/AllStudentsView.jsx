@@ -16,7 +16,10 @@ class AllStudentsView extends React.Component{
           <button onClick={this.props.addStudent} className="addButton">add students</button>
      
         <div>
-        {this.props.allStudents.map(student => (
+          {this.props.allStudents.length === 0 ? 
+          <p>No Students available</p> 
+          :
+        this.props.allStudents.map(student => (
           <div key={student.id} className="students-container">
             <div>
             <Link to = {`/students/${student.id}`}>
