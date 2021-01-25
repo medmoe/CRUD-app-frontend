@@ -46,10 +46,7 @@ class SingleStudent extends React.Component {
     handleEditClick = () => {
         this.setState({
             edit: true,
-            id: this.props.student.id,
-            campusId: this.props.student.campusId,
-            campus: this.props.student.campus,
-            imageUrl: this.props.student.imageUrl
+            id: this.props.student.id
         })
     }
     render(){
@@ -65,7 +62,7 @@ class SingleStudent extends React.Component {
                     <p>gpa: {this.props.student.gpa}</p>
                     <div>
                         <p>Campus</p>
-                        <p>{this.props.student.campusId ? this.linkToCampus(this.props.student.campus) : 'no campus available'}</p>
+                        <p>{this.props.student.campus ? this.linkToCampus(this.props.student.campus) : 'no campus available'}</p>
                     </div>
                 </div>
                 <button onClick = {this.handleEditClick}>Edit Student</button>
