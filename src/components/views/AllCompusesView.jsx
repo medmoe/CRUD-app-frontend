@@ -8,13 +8,16 @@ import {Link} from 'react-router-dom'
 class AllCompusesView extends React.Component{
   
  
-  handleDelete = (e) => {
-    this.props.handleDelete(e.target.value)
+  handleDelete= id => {
+    this.props.handleDelete(id);
   }
   render(){
-    return (
-      <div >
-        <h1>List of All Campuses</h1>
+      if(this.props.allCompuses.length === 0) {
+        return <div>
+          <p>There is no campuses</p>
+        </div>
+      }else{
+      return <div >
         <Link to='/add-campus' > <button className="addButton">add a campus</button> </Link>
        <div> 
         {this.props.allCompuses.map((item) =>
@@ -23,14 +26,14 @@ class AllCompusesView extends React.Component{
            image= {item.image} numberstudents= {item.numberstudents} id = {item.id}
            handleDelete={this.handleDelete}
            />
-           <button className="delete" onClick={this.handleDelete} value={item.id}> delete </button>
            <button onClick={this.props.editCampus} name={item.id}>edit campus</button>
            </div>)
            
         }
        </div> 
       </div>
-    );
+      }
+
   }
 };
 
