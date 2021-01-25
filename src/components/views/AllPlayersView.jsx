@@ -3,8 +3,8 @@ import './styles/style.css';
 
 const AllPlayersView = props => {
   return (
-    <div className="all-students">
-    <h1> Home PAGE</h1>
+    <div className="container home-container">
+    <h1 className="display-h4">WELCOME TO CAMPUSES-STUDENTS LIBRARY</h1>
     </div>
   );
 };
