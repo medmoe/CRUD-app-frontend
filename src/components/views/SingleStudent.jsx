@@ -1,7 +1,7 @@
 import React from 'react'
 import './styles/style.css';
 // import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 
 class SingleStudent extends React.Component {
     constructor(props) {
@@ -14,7 +14,8 @@ class SingleStudent extends React.Component {
             gpa: this.props.student,
             campusId: null,
             edit: false,
-            campus: null
+            campus: null,
+            imageUrl: ''
         }
     }
 
@@ -26,9 +27,8 @@ class SingleStudent extends React.Component {
         this.setState({
             edit: false
         })
-        console.log(this.state)
         this.props.updateStudent(this.state)
-        
+        return <Redirect to={`/students/${this.props.id}/`}/>
     }
 
     handleChange = e => {
@@ -36,11 +36,18 @@ class SingleStudent extends React.Component {
             [e.target.name]: e.target.value
         })
     }
+
+    handleSelect = e => {
+        console.log(Number(e.target.value))
+        this.setState({
+            campusId: Number(e.target.value)
+        })
+    }
     handleEditClick = () => {
         this.setState({
             edit: true,
             id: this.props.student.id,
-            campusId: this.props.student.campus ? this.props.student.campus.id : null,
+            campusId: this.props.student.campusId,
             campus: this.props.student.campus,
             imageUrl: this.props.student.imageUrl
         })
@@ -84,12 +91,26 @@ class SingleStudent extends React.Component {
                     <input type = 'email' onChange = {this.handleChange} name = 'email' required = {true}  placeholder = {this.props.student.email} />
                 </label>
                 </div>
+
+                <div className = 'studentInput'>
+                <label>
+                    Image Url:
+                    <input type = 'text' onChange = {this.handleChange} name = 'imageUrl' required = {false}  placeholder = "Add an image link" />
+                </label>
+                </div>
+
                 <div className = 'studentInput'>
                 <label>
                     GPA:
                     <input type = 'number' min = {0} max = {4} onChange = {this.handleChange} name = 'gpa' placeholder = {this.props.student.gpa} />
                 </label>
                 </div>
+                <select onChange = {this.handleSelect} name = 'campusId'>
+                    <option value = {this.props.student.campusId}>Select A School</option>
+                    {this.props.campuses.map((campus, index) => {
+                        return <option key = {index} value = {Number(campus.id)}>{campus.name}</option>
+                    })}
+                </select>
                 <div>
                     <input type = 'submit' />
                 </div>

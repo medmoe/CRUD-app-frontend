@@ -11,14 +11,15 @@ class SingleStudentContainer extends React.Component {
 
     render() {
         return (
-            <SingleStudentView student = {this.props.student} updateStudent = {this.props.updateStudent} />
+            <SingleStudentView student = {this.props.student} campuses = {this.props.campuses} updateStudent = {this.props.updateStudent} />
         )
     }
 }
 
 const mapStatetoProps = (state) => {
     return {
-        student: state.singleStudent
+        student: state.singleStudent,
+        campuses: state.allPlayers.allCampuses
     }
 }
 

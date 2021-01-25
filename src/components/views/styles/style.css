@@ -35,8 +35,8 @@
 }
 .students-container{
   border: 2px red solid;
-  width: 220px;
-  height: 260px;
+  min-width: 220px;
+  min-height: 260px;
   float: left;
   margin: 30px 30px;
   padding: 10px 10px;
@@ -45,10 +45,11 @@
 .students-list{
   display: flex;
 }
-.student-image{
+.images{
   border: 2px blue solid;
   height: 180px;
 }
+
 .student-info p {
   font-size: 16px;
   font-weight: bold;
