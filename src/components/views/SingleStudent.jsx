@@ -11,7 +11,7 @@ class SingleStudent extends React.Component {
             firstName: '',
             lastName: '',
             email: '',
-            gpa: this.props.student,
+            gpa: 0,
             campusId: null,
             edit: false,
             campus: null,
@@ -47,6 +47,19 @@ class SingleStudent extends React.Component {
         this.setState({
             edit: true,
             id: this.props.student.id
+        })
+    }
+    cancelSubmit = () => {
+        this.setState({
+            id: 0,
+            firstName: '',
+            lastName: '',
+            email: '',
+            gpa: 0,
+            campusId: null,
+            edit: false,
+            campus: null,
+            imageUrl: ''
         })
     }
     render(){
@@ -112,6 +125,7 @@ class SingleStudent extends React.Component {
                     <input type = 'submit' />
                 </div>
             </form>
+            <button onClick = {this.cancelSubmit}>Cancel</button>
         </div>
         )
     }
