@@ -12,8 +12,12 @@ class AllCompusesView extends React.Component{
     this.props.handleDelete(id);
   }
   render(){
-    return (
-      <div >
+      if(this.props.allCompuses.length === 0) {
+        return <div>
+          <p>There is no campuses</p>
+        </div>
+      }else{
+      return <div >
         <Link to='/add-campus' > <button className="addButton">add a campus</button> </Link>
        <div> 
         {this.props.allCompuses.map((item) =>
@@ -28,7 +32,8 @@ class AllCompusesView extends React.Component{
         }
        </div> 
       </div>
-    );
+      }
+
   }
 };
 
