@@ -81,51 +81,57 @@ class SingleStudent extends React.Component {
                 <button onClick = {this.handleEditClick}>Edit Student</button>
             </div>
             :
-            <div className = 'studentForm'>
+            <div className = "container updateCampus">
             <form onSubmit = {this.handleSubmit}>
-                <div className = 'studentInput'>
+                <div className = 'form-group'>
                 <label>
                     First name:
-                    <input type = 'text' onChange = {this.handleChange} name = 'firstName' required = {true} placeholder = {this.props.student.firstName} />
-                </label>
+                    </label>
+                    <input type = 'text' onChange = {this.handleChange} name = 'firstName' required = {true} placeholder = {this.props.student.firstName} className="form-control"/>
+                
                 </div>
-                <div className = 'studentInput' >
+                <div className = 'form-group' >
                 <label>
                     Last name:
-                    <input type = 'text' onChange = {this.handleChange} name = 'lastName' required = {true}  placeholder = {this.props.student.lastName} />
-                </label>
+                    </label>
+                    <input type = 'text' onChange = {this.handleChange} name = 'lastName' required = {true}  placeholder = {this.props.student.lastName} className="form-control"/>
+                
                 </div>
-                <div className = 'studentInput'>
+                <div className = 'form-group'>
                 <label>
                     Email:
-                    <input type = 'email' onChange = {this.handleChange} name = 'email' required = {true}  placeholder = {this.props.student.email} />
-                </label>
+                    </label>
+                    <input type = 'email' onChange = {this.handleChange} name = 'email' required = {true}  placeholder = {this.props.student.email} className="form-control"/>
+                
                 </div>
 
-                <div className = 'studentInput'>
+                <div className = 'form-group'>
                 <label>
                     Image Url:
-                    <input type = 'text' onChange = {this.handleChange} name = 'imageUrl' required = {false}  placeholder = "Add an image link" />
-                </label>
+                    </label>
+                    <input type = 'text' onChange = {this.handleChange} name = 'imageUrl' required = {false}  placeholder = "Add an image link" className="form-control"/>
+               
                 </div>
 
-                <div className = 'studentInput'>
+                <div className = 'form-group'>
                 <label>
                     GPA:
-                    <input type = 'number' min = {0} max = {4} onChange = {this.handleChange} name = 'gpa' placeholder = {this.props.student.gpa} />
-                </label>
+                    </label>
+                    <input type = 'number' min = {0} max = {4} onChange = {this.handleChange} name = 'gpa' placeholder = {this.props.student.gpa} className="form-control"/>
+               
                 </div>
-                <select onChange = {this.handleSelect} name = 'campusId'>
+                <div>
+                <select onChange = {this.handleSelect} name = 'campusId' className="selectpicker">
                     <option value = {this.props.student.campusId}>Select A School</option>
                     {this.props.campuses.map((campus, index) => {
                         return <option key = {index} value = {Number(campus.id)}>{campus.name}</option>
                     })}
                 </select>
-                <div>
-                    <input type = 'submit' />
-                </div>
+                </div> <br />
+                    <input type = 'submit' className="btn btn-primary" />
             </form>
-            <button onClick = {this.cancelSubmit}>Cancel</button>
+            <br />
+            <button onClick = {this.cancelSubmit} className="btn btn-primary">Cancel</button>
         </div>
         )
     }
