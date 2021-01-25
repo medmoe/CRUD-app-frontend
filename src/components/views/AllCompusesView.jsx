@@ -8,8 +8,8 @@ import {Link} from 'react-router-dom'
 class AllCompusesView extends React.Component{
   
  
-  handleDelete= id => {
-    this.props.handleDelete(id);
+  handleDelete = (e) => {
+    this.props.handleDelete(e.target.value)
   }
   render(){
       if(this.props.allCompuses.length === 0) {
@@ -26,6 +26,7 @@ class AllCompusesView extends React.Component{
            image= {item.image} numberstudents= {item.numberstudents} id = {item.id}
            handleDelete={this.handleDelete}
            />
+           <button className="delete" onClick={this.handleDelete} value={item.id}> delete </button>
            <button onClick={this.props.editCampus} name={item.id}>edit campus</button>
            </div>)
            
